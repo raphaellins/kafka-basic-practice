@@ -24,11 +24,11 @@ public class KafkaConfiguration {
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
 
-        return new DefaultKafkaProducerFactory<String, User>(config);
+        return new DefaultKafkaProducerFactory<>(config);
     }
 
     @Bean
     public KafkaTemplate<String, User> kafkaTemplate(){
-        return new KafkaTemplate<String, User>(producerFactory());
+        return new KafkaTemplate<>(producerFactory());
     }
 }
